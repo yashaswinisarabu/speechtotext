@@ -3,6 +3,7 @@ from flask import Flask, render_template, request
 from spacy_summarization import text_summarizer
 import os
 import spacy
+import logging
 from flask import session
 from database import uloginact, ureg, storedata, aaddmeeting, getvoices, meetingnames, storecombinedchats, getcombinedchats
 from datetime import datetime
@@ -10,7 +11,8 @@ nlp = spacy.load('en_core_web_sm')
 app = Flask(__name__)
 app.secret_key = os.urandom(24)
 
-
+app.logger.addHandler(logging.StreamHandler(sys.stdout))
+app.logger.setLevel(logging.ERROR)
 @app.route('/')
 @app.route('/index')
 def index():
