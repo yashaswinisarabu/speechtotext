@@ -8,7 +8,7 @@ from datetime import date
 
 
 def db_connect():
-    _conn = MySQLdb.connect(host="127.0.0.1", user='root',
+    _conn = MySQLdb.connect(host="localhost", user='root',
                             password='root', db='speechtotext')
     c = _conn.cursor()
 
